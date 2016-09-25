@@ -1,0 +1,44 @@
+git config --global user.email "krishna@ntc-us.com"
+git config --global user.name "krishnavedula"
+git init
+git add .
+git commit -m "Generated rails app"
+git log 
+git remote add origin https://github.com/krishnavedula/ticketee.git
+git push -u origin master
+
+Failed - authentication
+
+List existing SSH Keys
+
+ ls -al ~/.ssh
+total 56
+drwx------    9 KrishnaVedula  staff   306 Dec  2  2015 .
+drwxr-xr-x+ 105 KrishnaVedula  staff  3570 Sep 25 14:56 ..
+-rw-r--r--    1 KrishnaVedula  staff   838 Dec  2  2015 authorized_keys
+-rw-------    1 KrishnaVedula  staff  1679 Nov  2  2015 id_rsa
+-rw-r--r--    1 KrishnaVedula  staff   419 Nov  2  2015 id_rsa.pub
+-rw-------    1 KrishnaVedula  staff  1675 Dec  2  2015 id_rsa_hadoop
+-rw-r--r--    1 KrishnaVedula  staff   419 Dec  2  2015 id_rsa_hadoop.pub
+-rw-r--r--    1 KrishnaVedula  staff  2966 Sep 25 14:49 known_hosts
+-rw-r--r--    1 KrishnaVedula  staff   391 Nov  2  2015 known_hosts.local
+
+Check if SSH agent is running.
+
+ eval "$(ssh-agent -s)"
+Agent pid 32804
+
+Add the id_rsa key pair
+
+ ssh-add ~/.ssh/id_rsa
+Identity added: /Users/KrishnaVedula/.ssh/id_rsa (/Users/KrishnaVedula/.ssh/id_rsa)
+
+Copy the RSA Key to clipboard
+
+pbcopy < ~/.ssh/id_rsa.pub
+
+Then paste it in GIT-window to add the RSA to GIT.
+
+https://github.com/settings/ssh
+
+git push -u origin master
